@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+}
+
+.chatbot-container {
+    width: 360px;
+    height: 500px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background: #1e3a8a;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+}
+
+.registration-form {
+    flex: 1;
+    overflow-y: auto;
+    display: none;
+}
+
+.chat-content {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 10px;
+    max-width: 80%;
+    white-space: pre-line; /* 🔥 newline dari Dialogflow */
+}
+
+.bot {
+    background: #e5e7eb;
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+.user {
+    background: #2563eb;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 10px;
+    margin-left: auto;
+}
+
+.chat-footer {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+.chat-footer input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+
+.chat-footer button {
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.chips {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.chip {
+    background: #dbeafe;
+    color: #1e3a8a;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.review-buttons {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.review-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.review-btn.positive {
+    background: #10b981;
+    color: white;
+}
+
+.review-btn.positive:hover {
+    background: #059669;
+}
+
+.review-btn.negative {
+    background: #ef4444;
+    color: white;
+}
+
+.review-btn.negative:hover {
+    background: #dc2626;
+}
