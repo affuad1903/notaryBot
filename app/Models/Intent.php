@@ -22,6 +22,7 @@ class Intent extends Model
         'action',
         'synced',
         'last_synced_at',
+        'usage_count',
     ];
 
     protected $casts = [

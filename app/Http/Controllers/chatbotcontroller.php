@@ -11,6 +11,7 @@ use Google\Cloud\Dialogflow\V2\EventInput;
 use App\Models\ChatUser;
 use App\Models\Review;
 use App\Models\UnansweredQuestion;
+use App\Models\Intent;
 
 class ChatbotController extends Controller
 {
@@ -88,6 +89,12 @@ class ChatbotController extends Controller
             $response = $sessionsClient->detectIntent($detectIntentRequest);
             $queryResult = $response->getQueryResult();
 
+            // Track intent usage
+            $intentDisplayName = $queryResult->getIntent()->getDisplayName();
+            if ($intentDisplayName) {
+                Intent::where('display_name', $intentDisplayName)->increment('usage_count');
+            }
+
             $sessionsClient->close();
 
             // Parse fulfillment messages
@@ -140,6 +147,12 @@ class ChatbotController extends Controller
             // Send request to Dialogflow
             $response = $sessionsClient->detectIntent($detectIntentRequest);
             $queryResult = $response->getQueryResult();
+
+            // Track intent usage for welcome event
+            $intentDisplayName = $queryResult->getIntent()->getDisplayName();
+            if ($intentDisplayName) {
+                Intent::where('display_name', $intentDisplayName)->increment('usage_count');
+            }
 
             $sessionsClient->close();
 

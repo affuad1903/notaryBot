@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\IntentController;
+use App\Http\Controllers\ReportController;
 
 Route::get('/chatbot', function () {
     return view('chatbot');
@@ -14,6 +15,10 @@ Route::post('/chatbot/send', [ChatbotController::class, 'send']);
 Route::get('/chatbot/welcome', [ChatbotController::class, 'welcome']);
 Route::post('/chatbot/review', [ChatbotController::class, 'submitReview']);
 Route::post('/chatbot/unanswered-question', [ChatbotController::class, 'saveUnansweredQuestion']);
+
+// Routes untuk laporan
+Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+Route::get('/reports/intents', [ReportController::class, 'getIntentData'])->name('reports.intents');
 
 // Routes untuk manajemen intents
 Route::prefix('intents')->name('intents.')->group(function () {
